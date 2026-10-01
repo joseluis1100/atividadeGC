@@ -12,17 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Baixa o conteúdo do repositório
       - name: Checkout do repositório
         uses: actions/checkout@v4
-
-      # 2. Segunda action oficial: Configura o ambiente Node.js
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      # 3. Executa comandos simples no console
       - name: Executar comandos de teste
         run: |
           echo "Pipeline executada com sucesso!"
