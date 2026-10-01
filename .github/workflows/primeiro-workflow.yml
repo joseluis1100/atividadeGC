@@ -1,0 +1,32 @@
+name: Primeiro Workflow
+
+# Executa sempre que houver um push no repositório
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  executar-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Baixa o conteúdo do repositório
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      # 2. Segunda action oficial: Configura o ambiente Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. Executa comandos simples no console
+      - name: Executar comandos de teste
+        run: |
+          echo "Pipeline executada com sucesso!"
+          echo "Versão do Node instalada:"
+          node -v
+          echo "Listando os arquivos do projeto:"
+          ls -la
